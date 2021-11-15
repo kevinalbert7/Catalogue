@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { BrowserRouter, Route, Switch} from 'react-router-dom'
+
+import Home from './pages/Home'
+import Film from './pages/Film'
+import Error404 from './pages/Error404'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+class App extends Component {
+
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          
+          <Switch>
+            <Route exact path="/" component={Home}/>
+              {/* <Home /> */}
+            <Route path="/Film/:id" component={Film}/>
+              {/* <Film /> */}
+            <Route path="*" component={Error404}/>
+          </Switch>
+        
+        </div>
+      </BrowserRouter>
+    )
+  }
 }
 
-export default App;
+export default App
